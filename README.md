@@ -37,7 +37,7 @@ Store System is a comprehensive e-commerce backend API built with ASP.NET Core W
 ### Steps
 1. **Clone the repository**
    ```
-   git clone [your-repository-url]
+   git clone https://github.com/EslamAbdelwahid/store-system-api.git
    cd StoreSystem
    ```
 
