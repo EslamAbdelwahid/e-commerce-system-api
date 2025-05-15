@@ -1,46 +1,46 @@
-# E-Commerce API Platform
+# My E-Commerce API Project
 
-## Project Description
-A robust backend API solution for e-commerce applications built with ASP.NET Core Web API. This project demonstrates the implementation of industry-standard architecture patterns and modern web development practices.
+## What is this?
+This is a backend API I built for online stores using ASP.NET Core. I created it to practice my web development skills and learn more about building real-world applications.
 
-## Core Capabilities
+## What can it do?
 
-### Customer Experience
-- Browse complete product catalog
-- Filter products by category or manufacturer
-- Virtual shopping cart functionality
-- Streamlined checkout process
-- Secure online payment processing via Stripe
-- User account management with authentication
+### For shoppers:
+- See all products in the store
+- Filter stuff by type or brand
+- Add items to a shopping cart
+- Check out and place orders
+- Pay securely online through Stripe
+- Create accounts and log in
 
-### Technical Stack
+### Tech stuff I used:
 
-#### Architecture & Design
-- **Clean Architecture** (Onion pattern)
-- **Design Patterns**
-  * Repository Pattern with Generic Implementation
-  * Unit of Work for Transaction Management
-  * Specification Pattern for Query Flexibility
+#### Architecture stuff:
+- Onion Architecture (also called Clean Architecture)
+- Some useful patterns I learned about:
+  * Generic Repository Pattern
+  * Unit of Work Pattern
+  * Specification Pattern
 
-#### Performance Enhancements
-- Redis-powered basket storage for lightning-fast operations
-- Strategic response caching for high-demand endpoints
-- Smart pagination for efficient data retrieval
+#### Making it fast:
+- Used Redis for storing shopping carts
+- Added caching for things people request a lot
+- Made pages load in smaller chunks for better performance
 
-#### Security Framework
-- Token-based authentication with JWT
-- ASP.NET Core Identity integration
-- Comprehensive exception handling middleware
+#### Keeping it secure:
+- JWT tokens for logging in
+- ASP.NET Core Identity for user accounts
+- Error handling that doesn't reveal too much
 
-## Setup Guide
+## How to set it up
 
-### System Requirements
-- .NET 6.0+ SDK
-- SQL Server instance
-- Redis server installation
-- Active Stripe account
+### What you'll need:
+- .NET 6.0 or newer
+- SQL Server
+- Redis
+- Stripe account for payments
 
-### Deployment Instructions
+### Steps:
 
 1. **Get the code**
    ```
@@ -48,19 +48,19 @@ A robust backend API solution for e-commerce applications built with ASP.NET Cor
    cd e-commerce-api
    ```
 
-2. **Configure database connections**
+2. **Set up your database**
    
-   Edit `appsettings.json` to include your connection details:
+   Go to `appsettings.json` and change these lines:
    ```json
    "ConnectionStrings": {
-     "DefaultConnection": "Server=your_database_server;Database=ECommerceDB;Trusted_Connection=True;MultipleActiveResultSets=true",
+     "DefaultConnection": "Server=your_server;Database=ECommerceDB;Trusted_Connection=True;MultipleActiveResultSets=true",
      "Redis": "localhost:6379"
    }
    ```
 
-3. **Set up payment processing**
+3. **Add your Stripe keys**
    
-   Add your Stripe credentials to `appsettings.json`:
+   In the same file, add:
    ```json
    "StripeSettings": {
      "PublishableKey": "pk_test_your_key",
@@ -68,47 +68,47 @@ A robust backend API solution for e-commerce applications built with ASP.NET Cor
    }
    ```
 
-4. **Initialize the database**
+4. **Set up the database**
    ```
    dotnet ef database update
    ```
 
-5. **Launch the application**
+5. **Start it up**
    ```
    dotnet run
    ```
 
-## API Reference
+## API Endpoints
 
-### User Management
-- `POST /api/Accounts/login` - Authenticate user
-- `POST /api/Accounts/register` - Create new account
-- `GET /api/Accounts/getcurrentuser` - Retrieve user profile
-- `GET /api/Accounts/getaddress` - Fetch shipping address
-- `PUT /api/Accounts/updateaddress` - Modify shipping address
+### User stuff:
+- `POST /api/Accounts/login` - Log in
+- `POST /api/Accounts/register` - Sign up
+- `GET /api/Accounts/getcurrentuser` - Get your info
+- `GET /api/Accounts/getaddress` - Get your address
+- `PUT /api/Accounts/updateaddress` - Change your address
 
-### Cart Operations
-- `GET /api/Baskets` - Retrieve current cart
-- `POST /api/Baskets` - Create/update cart
-- `DELETE /api/Baskets` - Remove cart
+### Shopping cart:
+- `GET /api/Baskets` - See what's in your cart
+- `POST /api/Baskets` - Add/update items
+- `DELETE /api/Baskets` - Empty your cart
 
-### Order Processing
-- `GET /api/Orders` - List all user orders
-- `GET /api/Orders/{id}` - View specific order details
-- `POST /api/Orders` - Place new order
-- `GET /api/Orders/DeliveryMethods` - List shipping options
+### Orders:
+- `GET /api/Orders` - See your orders
+- `GET /api/Orders/{id}` - Look at a specific order
+- `POST /api/Orders` - Place an order
+- `GET /api/Orders/DeliveryMethods` - See shipping options
 
-### Payment Processing
-- `POST /api/Payments/{basketId}` - Process transaction
+### Payments:
+- `POST /api/Payments/{basketId}` - Pay for your order
 
-### Product Catalog
-- `GET /api/Products` - Browse products (paginated)
-- `GET /api/Products/{id}` - View product details
-- `GET /api/Products/brands` - List available brands
-- `GET /api/Products/types` - List product categories
+### Products:
+- `GET /api/Products` - Browse products
+- `GET /api/Products/{id}` - Look at one product
+- `GET /api/Products/brands` - See all brands
+- `GET /api/Products/types` - See all product types
 
-## Exception Management
-The platform implements a sophisticated exception handling system that captures all errors and generates appropriate HTTP responses with meaningful status codes.
+## Error Handling
+I added some code that catches errors and sends back helpful messages without crashing the app.
 
-## Project Background
-This API was developed as a professional learning exercise to demonstrate competence in ASP.NET Core and modern web API development techniques.
+## Why I made this
+I built this project to learn more about ASP.NET Core and how to make web APIs. It was a fun challenge to put everything together and see it work!
