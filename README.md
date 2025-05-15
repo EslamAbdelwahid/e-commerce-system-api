@@ -1,108 +1,114 @@
-# Store System
+# E-Commerce API Platform
 
-## Overview
-Store System is a comprehensive e-commerce backend API built with ASP.NET Core Web API. This project was developed as part of my learning journey, implementing modern software architecture patterns and technologies.
+## Project Description
+A robust backend API solution for e-commerce applications built with ASP.NET Core Web API. This project demonstrates the implementation of industry-standard architecture patterns and modern web development practices.
 
-## Features
-- **Product Browsing**: Users can view all products available in the store
-- **Filtering**: Get products by type or brand
-- **Shopping Basket**: Create and manage shopping baskets
-- **Checkout System**: Complete orders with different payment options
-- **Online Payments**: Integrated with Stripe for secure online payments
-- **User Authentication**: JWT-based authentication using ASP.NET Core Identity
+## Core Capabilities
 
-## Technical Implementation
-- **Architecture**: Onion (Clean) Architecture
-- **Design Patterns**:
-  - Generic Repository Pattern
-  - Unit of Work Pattern
-  - Specification Pattern
-- **Performance Optimization**:
-  - Redis caching for basket storage
-  - Response caching for frequently requested endpoints
-  - Pagination for large data sets
-- **Security**:
-  - JWT Authentication
-  - ASP.NET Core Identity
-- **Error Handling**: Custom middleware for global exception handling
+### Customer Experience
+- Browse complete product catalog
+- Filter products by category or manufacturer
+- Virtual shopping cart functionality
+- Streamlined checkout process
+- Secure online payment processing via Stripe
+- User account management with authentication
 
-## Installation
+### Technical Stack
 
-### Prerequisites
-- .NET 6.0 SDK or later
-- SQL Server (or alternative compatible database)
-- Redis server
-- Stripe account for payment processing
+#### Architecture & Design
+- **Clean Architecture** (Onion pattern)
+- **Design Patterns**
+  * Repository Pattern with Generic Implementation
+  * Unit of Work for Transaction Management
+  * Specification Pattern for Query Flexibility
 
-### Steps
-1. **Clone the repository**
+#### Performance Enhancements
+- Redis-powered basket storage for lightning-fast operations
+- Strategic response caching for high-demand endpoints
+- Smart pagination for efficient data retrieval
+
+#### Security Framework
+- Token-based authentication with JWT
+- ASP.NET Core Identity integration
+- Comprehensive exception handling middleware
+
+## Setup Guide
+
+### System Requirements
+- .NET 6.0+ SDK
+- SQL Server instance
+- Redis server installation
+- Active Stripe account
+
+### Deployment Instructions
+
+1. **Get the code**
    ```
-   git clone https://github.com/EslamAbdelwahid/store-system-api.git
-   cd StoreSystem
+   git clone https://github.com/YourUsername/e-commerce-api.git
+   cd e-commerce-api
    ```
 
-2. **Update the connection strings**
+2. **Configure database connections**
    
-   In `appsettings.json`, update the connection strings for your database and Redis:
+   Edit `appsettings.json` to include your connection details:
    ```json
    "ConnectionStrings": {
-     "DefaultConnection": "Server=your_server;Database=StoreSystem;Trusted_Connection=True;MultipleActiveResultSets=true",
+     "DefaultConnection": "Server=your_database_server;Database=ECommerceDB;Trusted_Connection=True;MultipleActiveResultSets=true",
      "Redis": "localhost:6379"
    }
    ```
 
-3. **Set up Stripe API keys**
+3. **Set up payment processing**
    
-   In `appsettings.json`, add your Stripe API keys:
+   Add your Stripe credentials to `appsettings.json`:
    ```json
    "StripeSettings": {
-     "PublishableKey": "your_publishable_key",
-     "SecretKey": "your_secret_key"
+     "PublishableKey": "pk_test_your_key",
+     "SecretKey": "sk_test_your_key"
    }
    ```
 
-4. **Apply database migrations**
+4. **Initialize the database**
    ```
    dotnet ef database update
    ```
 
-5. **Run the application**
+5. **Launch the application**
    ```
    dotnet run
    ```
 
-## API Endpoints
+## API Reference
 
-### Accounts
-- `POST /api/Accounts/login` - User login
-- `POST /api/Accounts/register` - User registration
-- `GET /api/Accounts/getcurrentuser` - Get current user information
-- `GET /api/Accounts/getaddress` - Get user's address
-- `PUT /api/Accounts/updateaddress` - Update user's address
+### User Management
+- `POST /api/Accounts/login` - Authenticate user
+- `POST /api/Accounts/register` - Create new account
+- `GET /api/Accounts/getcurrentuser` - Retrieve user profile
+- `GET /api/Accounts/getaddress` - Fetch shipping address
+- `PUT /api/Accounts/updateaddress` - Modify shipping address
 
-### Baskets
-- `GET /api/Baskets` - Get the current user's basket
-- `POST /api/Baskets` - Create or update a basket
-- `DELETE /api/Baskets` - Delete a basket
+### Cart Operations
+- `GET /api/Baskets` - Retrieve current cart
+- `POST /api/Baskets` - Create/update cart
+- `DELETE /api/Baskets` - Remove cart
 
-### Orders
-- `GET /api/Orders` - Get user's orders
-- `GET /api/Orders/{id}` - Get a specific order
-- `POST /api/Orders` - Create a new order
-- `GET /api/Orders/DeliveryMethods` - Get available delivery methods
+### Order Processing
+- `GET /api/Orders` - List all user orders
+- `GET /api/Orders/{id}` - View specific order details
+- `POST /api/Orders` - Place new order
+- `GET /api/Orders/DeliveryMethods` - List shipping options
 
-### Payments
-- `POST /api/Payments/{basketId}` - Process a payment for a specific basket
+### Payment Processing
+- `POST /api/Payments/{basketId}` - Process transaction
 
-### Products
-- `GET /api/Products` - Get all products (with pagination)
-- `GET /api/Products/{id}` - Get a specific product
-- `GET /api/Products/brands` - Get all product brands
-- `GET /api/Products/types` - Get all product types
+### Product Catalog
+- `GET /api/Products` - Browse products (paginated)
+- `GET /api/Products/{id}` - View product details
+- `GET /api/Products/brands` - List available brands
+- `GET /api/Products/types` - List product categories
 
-## Error Handling
-The application uses a custom exception middleware that catches all exceptions and returns appropriate HTTP status codes and error messages.
+## Exception Management
+The platform implements a sophisticated exception handling system that captures all errors and generates appropriate HTTP responses with meaningful status codes.
 
-
-## Acknowledgments
-This project was developed as part of my learning journey in ASP.NET Core and modern web API development.
+## Project Background
+This API was developed as a professional learning exercise to demonstrate competence in ASP.NET Core and modern web API development techniques.
